@@ -13,7 +13,7 @@ steps:
 # Checkout repository https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout?view=azure-devops
 #                  & https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/steps-checkout?view=azure-pipelines
 - checkout: self
-  path: mySource
+  path: mySource  # in absense of this line, the source is put in $(Agent.BuildDirectory)/s/ directory
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
