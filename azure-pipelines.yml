@@ -67,17 +67,17 @@ stages:
     steps:
     - script: echo Deployed To Prod
 
-- stage: DeployToProdApproval
-  displayName: Production Approval Needed
-#  trigger: manual
-  jobs:
-  - deployment: DeployProdApproved
-    displayName: deploy To Prod after approval
-    environment: 
-      name: 'Prod'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - script: echo Hello world
+#- stage: DeployToProdApproval
+#  displayName: Production Approval Needed
+##  trigger: manual
+#  jobs:
+#  - deployment: DeployProdApproved
+#    displayName: deploy To Prod after approval
+#    environment: 
+#      name: 'Prod'
+#    strategy:
+#      runOnce:
+#        deploy:
+#          steps:
+#          - script: echo Hello world
 
