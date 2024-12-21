@@ -21,4 +21,5 @@ steps:
     pwd
     echo '$(Agent.BuildDirectory)'
     cat ./test.sql
+    cat '$(Agent.BuildDirectory)/s/test.sql'
   displayName: 'Run a multi-line script'
