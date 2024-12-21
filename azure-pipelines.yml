@@ -6,6 +6,11 @@
 # See yaml syntax: https://learnxinyminutes.com/yaml/
 # see pipeline concept: https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/key-pipelines-concepts?view=azure-devops
 
+# DACPAC file https://learn.microsoft.com/en-us/azure/devops/pipelines/targets/azure-sqldb?view=azure-devops&tabs=yaml
+# SQL https://learn.microsoft.com/en-us/azure/devops/pipelines/targets/azure-sqldb?view=azure-devops&tabs=yaml
+
+
+
 trigger:
 - main
 
