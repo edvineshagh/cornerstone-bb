@@ -30,7 +30,7 @@ stages:
     - script: |
         echo Add other tasks to build, test, and deploy your project.
         echo See https://aka.ms/yaml
-        echo 'pipline variable myPassword=$(myPassword)'
+        echo 'pipline variable myPassword=$(myPassword) & =$(MYPASSWORD)'
         ls
         pwd
         echo '$(Agent.BuildDirectory)'
