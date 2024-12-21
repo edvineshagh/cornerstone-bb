@@ -17,7 +17,7 @@ name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 # stages: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
 stages:
 - stage: DeployToDev
-  displayName: Development Deployment
+  displayName: Development
   jobs:
   - job:
     steps:
@@ -43,14 +43,14 @@ stages:
 
 
 - stage: DeployToTest
-  displayName: Test Deployment
+  displayName: Test
   jobs:
   - job:
     steps:
     - script: echo Deployed To Test
 
 - stage: DeployToProd
-  displayName: Production Deployment
+  displayName: Production
   trigger: manual
   jobs:
   - job:
