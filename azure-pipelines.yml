@@ -15,7 +15,7 @@ pool:
 # stages: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
 stages:
 - stage: DeployToDev
-  displayName: Development stage
+  displayName: Development Deployment
   jobs:
   - job:
     steps:
@@ -40,14 +40,14 @@ stages:
 
 
 - stage: DeployToTest
-  displayName: Test stage
+  displayName: Test Deployment
   jobs:
   - job:
     steps:
     - script: echo Deployed To Test
 
 - stage: DeployToProd
-  displayName: Prod stage
+  displayName: Production Deployment
   trigger: manual
   jobs:
   - job:
