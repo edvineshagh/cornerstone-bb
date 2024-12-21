@@ -4,13 +4,15 @@
 # https://aka.ms/yaml
 
 # See yaml syntax: https://learnxinyminutes.com/yaml/
-#
+# see pipeline concept: https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/key-pipelines-concepts?view=azure-devops
 
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
+
+name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
 # stages: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
 stages:
@@ -30,10 +32,11 @@ stages:
     - script: |
         echo Add other tasks to build, test, and deploy your project.
         echo See https://aka.ms/yaml
-        echo 'pipline variable myPassword=$(myPassword) & =$(MYPASSWORD)'
+        echo 'Variable myPassword=$(myPassword)'
+        echo 'Variable BuildDefintion=$(Build.DefinitionName)'
         ls
         pwd
-        echo '$(Agent.BuildDirectory)'
+        echo 'Agent.BuildDirectory=$(Agent.BuildDirectory)'
         cat ./test.sql
         cat '$(Agent.BuildDirectory)/mySource/test.sql'
       displayName: 'Run a multi-line script'
