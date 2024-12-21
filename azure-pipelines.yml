@@ -73,6 +73,8 @@ stages:
 #  jobs:
 #  - deployment: DeployProdApproved
 #    displayName: deploy To Prod after approval
+#
+##   https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#target-an-environment-from-a-deployment-job
 #    environment: 
 #      name: 'Prod'
 #    strategy:
