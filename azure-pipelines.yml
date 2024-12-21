@@ -59,10 +59,25 @@ stages:
 # Approval checks 
 # https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass
 
-- stage: DeployToProd
-  displayName: Production
+- stage: DeployToProdStandard
+  displayName: Trigger Production
   trigger: manual
   jobs:
   - job:
     steps:
     - script: echo Deployed To Prod
+
+- stage: DeployToProdApproval
+  displayName: Production Approval Needed
+#  trigger: manual
+  jobs:
+  - deployment: DeployProdApproved
+    displayName: deploy To Prod after approval
+    environment: 
+      name: 'Prod'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
+
