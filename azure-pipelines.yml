@@ -12,21 +12,44 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-# Checkout repository https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout?view=azure-devops
-#                  & https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/steps-checkout?view=azure-pipelines
-- checkout: self
-  path: mySource  # in absense of this line, the source is put in $(Agent.BuildDirectory)/s/ directory
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+# stages: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
+stages:
+- stage: DeployToDev
+  displayName: Development stage
+  jobs:
+  - job:
+    steps:
+    - script: echo Deployed To Dev
+    # Checkout repository https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout?view=azure-devops
+    #                  & https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/steps-checkout?view=azure-pipelines
+    - checkout: self
+      path: mySource  # in absense of this line, the source is put in $(Agent.BuildDirectory)/s/ directory
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-    echo 'pipline variable myPassword=$(myPassword)
-    ls
-    pwd
-    echo '$(Agent.BuildDirectory)'
-    cat ./test.sql
-    cat '$(Agent.BuildDirectory)/mySource/test.sql'
-  displayName: 'Run a multi-line script'
+    - script: |
+        echo Add other tasks to build, test, and deploy your project.
+        echo See https://aka.ms/yaml
+        echo 'pipline variable myPassword=$(myPassword)'
+        ls
+        pwd
+        echo '$(Agent.BuildDirectory)'
+        cat ./test.sql
+        cat '$(Agent.BuildDirectory)/mySource/test.sql'
+      displayName: 'Run a multi-line script'
+
+
+- stage: DeployToTest
+  displayName: Test stage
+  jobs:
+  - job:
+    steps:
+    - script: echo Deployed To Test
+
+- stage: DeployToProd
+  displayName: Prod stage
+  trigger: manual
+  jobs:
+  - job:
+    steps:
+    - script: echo Deployed To Prod
