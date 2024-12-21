@@ -56,6 +56,9 @@ stages:
     steps:
     - script: echo Deployed To Test
 
+# Approval checks 
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass
+
 - stage: DeployToProd
   displayName: Production
   trigger: manual
