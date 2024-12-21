@@ -12,6 +12,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+# variables - https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
 name: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)
 
 # stages: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
@@ -33,7 +34,8 @@ stages:
         echo Add other tasks to build, test, and deploy your project.
         echo See https://aka.ms/yaml
         echo 'Variable myPassword=$(myPassword)'
-        echo 'Execution pipeline (version) name=$(name)'
+        echo 'Execution pipeline (version) name=$(Build.DefinitionVersion)'
+        echo 'Strategy.Name=$(Strategy.Name)'
         ls
         pwd
         echo 'Agent.BuildDirectory=$(Agent.BuildDirectory)'
