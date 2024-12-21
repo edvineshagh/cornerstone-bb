@@ -33,7 +33,7 @@ stages:
         echo Add other tasks to build, test, and deploy your project.
         echo See https://aka.ms/yaml
         echo 'Variable myPassword=$(myPassword)'
-        echo 'Variable BuildDefintion=$(Build.DefinitionName)'
+        echo 'Execution pipeline (version) name=$(name)'
         ls
         pwd
         echo 'Agent.BuildDirectory=$(Agent.BuildDirectory)'
