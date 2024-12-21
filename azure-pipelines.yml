@@ -16,5 +16,5 @@ steps:
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
-    echo '$(Agent.BuildDirectory)/s/scripts/script.ps1'
+    cat '$(Agent.BuildDirectory)/test.sql'
   displayName: 'Run a multi-line script'
